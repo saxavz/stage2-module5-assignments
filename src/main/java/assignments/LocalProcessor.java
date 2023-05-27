@@ -76,7 +76,7 @@ public class LocalProcessor {
             } catch (FileNotFoundException e){
                 throw new RuntimeException(e);
             }
-            this.processorVersion = builder.toString();
+            this.processorName = builder.toString();
     }
 
 //    public static void main(String[] args) {
