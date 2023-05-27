@@ -47,14 +47,23 @@ public class LocalProcessor {
         }
     }
 
+//    @FullNameProcessorGeneratorAnnotation
+//    public String fullnameProcessorgenerator(LinkedList<String> stringList) {
+//        for (int i = 0; i < stringArrayList.size(); i++) {
+//            processorName+=stringList.get(i)+' ';
+//        }
+//        return processorName;
+//    }
+
     @FullNameProcessorGeneratorAnnotation
     public String fullNameProcessorGenerator(List<String> strings) {
-        if(Objects.isNull(strings)) return "";
+        Objects.nonNull(strings);
 
         StringBuilder builder = new StringBuilder();
         for(String s :  strings){
             if(s != null){
-                builder.append(s);
+                builder.append(s)
+                        .append(' ');
             }
         }
         this.processorName = builder.toString();
@@ -63,20 +72,18 @@ public class LocalProcessor {
 
     @ReadFullProcessorNameAnnotation
     public void readFullProcessorName(File file) {
-            if(Objects.isNull(file)){
-                throw new IllegalArgumentException();
-            }
+            Objects.nonNull(file);
 
-            StringBuilder builder = new StringBuilder();
             try(Scanner scanner = new Scanner(file)){
+                StringBuilder builder = new StringBuilder();
                 this.informationScanner = scanner;
                 while (scanner.hasNext()) {
                     builder.append(scanner.nextLine());
                 }
+                this.processorVersion = builder.toString();
             } catch (FileNotFoundException e){
                 throw new RuntimeException(e);
             }
-            this.processorName = builder.toString();
     }
 
 //    public static void main(String[] args) {
