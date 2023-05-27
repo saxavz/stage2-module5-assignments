@@ -75,5 +75,11 @@ public class LocalProcessor {
             } catch (FileNotFoundException e){
                 throw new RuntimeException(e);
             }
+            this.processorVersion = builder.toString();
     }
+
+//    public static void main(String[] args) {
+//        LocalProcessor p = new LocalProcessor();
+//        System.out.println( p.fullNameProcessorGenerator(List.of("1", "2", "3")) );
+//    }
 }
