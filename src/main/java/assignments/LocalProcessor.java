@@ -57,7 +57,8 @@ public class LocalProcessor {
                 builder.append(s);
             }
         }
-        return builder.toString();
+        this.processorName = builder.toString();
+        return processorName;
     }
 
     @ReadFullProcessorNameAnnotation
