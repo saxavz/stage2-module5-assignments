@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LocalProcessor {
-    private final static long DEFAULT_PERIOD = 10000000000000L;
+    private final static long DEFAULT_PERIOD = 10_000_000_000_000L;
     private String processorName;
     private long period;
     protected String processorVersion;
@@ -90,11 +90,4 @@ public class LocalProcessor {
                 throw new RuntimeException(e);
             }
     }
-
-//    public static void main(String[] args) {
-//        LocalProcessor p = new LocalProcessor();
-//        List<String> l = List.of("1", "2", "3");
-//        p.setStrings(l);
-//        System.out.println( p.fullNameProcessorGenerator(l) );
-//    }
 }
