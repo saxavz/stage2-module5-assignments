@@ -3,6 +3,8 @@ package assignments;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import assignments.annotations.FullNameProcessorGeneratorAnnotation;
 import assignments.annotations.ListIteratorAnnotation;
@@ -47,28 +49,30 @@ public class LocalProcessor {
         }
     }
 
-//    @FullNameProcessorGeneratorAnnotation
-//    public String fullnameProcessorgenerator(LinkedList<String> stringList) {
-//        for (int i = 0; i < stringArrayList.size(); i++) {
-//            processorName+=stringList.get(i)+' ';
-//        }
-//        return processorName;
-//    }
-
     @FullNameProcessorGeneratorAnnotation
-    public String fullNameProcessorGenerator(List<String> strings) {
-        Objects.nonNull(strings);
+    public String fullNameProcessorGenerator(List<String> input) {
+        Objects.nonNull(input);
+        this.processorName = IntStream.range(0, strings.size())
+                                        .mapToObj( i -> input.get(i))
+                                        .collect(Collectors.joining(" "));
 
-        StringBuilder builder = new StringBuilder();
-        for(String s :  strings){
-            if(s != null){
-                builder.append(s)
-                        .append(' ');
-            }
-        }
-        this.processorName = builder.toString();
         return processorName;
     }
+
+//    @FullNameProcessorGeneratorAnnotation
+//    public String fullNameProcessorGenerator(List<String> strings) {
+//        Objects.nonNull(strings);
+//
+//        StringBuilder builder = new StringBuilder();
+//        for(String s :  strings){
+//            if(s != null){
+//                builder.append(s)
+//                        .append(' ');
+//            }
+//        }
+//        this.processorName = builder.toString();
+//        return processorName;
+//    }
 
     @ReadFullProcessorNameAnnotation
     public void readFullProcessorName(File file) {
@@ -88,6 +92,8 @@ public class LocalProcessor {
 
 //    public static void main(String[] args) {
 //        LocalProcessor p = new LocalProcessor();
-//        System.out.println( p.fullNameProcessorGenerator(List.of("1", "2", "3")) );
+//        List<String> l = List.of("1", "2", "3");
+//        p.setStrings(l);
+//        System.out.println( p.fullNameProcessorGenerator(l) );
 //    }
 }
