@@ -39,14 +39,15 @@ public class LocalProcessor {
     }
 
     @ListIteratorAnnotation
-    public void listIterator(List<String> strings) {
-        if(!Objects.isNull(strings)) {
-            for (String s : new LinkedList<>(strings)) {
+    public void listIterator(List<String> input) {
+        Objects.nonNull(input);
+        this.strings = new LinkedList<>(input);
+
+            for (String s : this.strings) {
                 if(s != null) {
                     System.out.println(s.hashCode());
                 }
             }
-        }
     }
 
     @FullNameProcessorGeneratorAnnotation
